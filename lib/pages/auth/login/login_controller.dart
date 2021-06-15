@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:packboss/apis/auth/login_api.dart';
+import 'package:packboss/helpers/index.dart';
 import 'package:packboss/models/index.dart';
 import 'package:packboss/routes/index.dart';
 
@@ -21,6 +22,11 @@ class LoginController extends GetxController {
     super.onReady();
   }
 
+  @override
+  void onClose() {
+    super.onClose();
+  }
+
   Future<bool> onRefresh() async {
     await Future.delayed(Duration(seconds: 1), () {});
     return true;
@@ -36,6 +42,7 @@ class LoginController extends GetxController {
       loginData = result.data;
       print('sukses');
       Get.snackbar('Berhasil', 'Selamat datang');
+      await AppPreference.setMobileToken(loginData.accessToken);
       Get.toNamed(AppRoutes.homePage,
           arguments: ScreenArguments()..id = 'id nya mas');
       isLoading = false;

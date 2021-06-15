@@ -40,222 +40,224 @@ class HomePage extends StatelessWidget {
                   color: ColorTheme.whiteColor,
                 ),
               ),
-              onTap: () {},
+              onTap: controller.tapProfile,
             ),
           ],
         ),
-        body: Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-            gradient: GradientBg.getGradient(),
-          ),
-          child: NestedScrollView(
-            headerSliverBuilder:
-                (BuildContext context, bool innerBoxIsScrolled) {
-              return [
-                SliverAppBar(
-                  expandedHeight: 300,
-                  floating: false,
-                  pinned: true,
-                  stretch: true,
-                  backgroundColor: Colors.transparent,
-                  shadowColor: Colors.transparent,
-                  leading: Container(),
-                  flexibleSpace: FlexibleSpaceBar(
-                    stretchModes: [
-                      StretchMode.blurBackground,
-                      StretchMode.zoomBackground,
-                    ],
-                    background: Image.asset(
-                      'assets/images/bg.png',
-                      fit: BoxFit.fitHeight,
-                    ),
-                  ),
-                ),
-              ];
-            },
-            body: Container(
-              height: MediaQuery.of(context).size.height,
-              padding: EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: ColorTheme.whiteColor,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(30),
-                  topRight: Radius.circular(30),
-                ),
-              ),
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 8,
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    child: Card(
-                      color: ColorTheme.whiteColor,
-                      elevation: 4,
-                      child: Container(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 8,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Container(
-                              child: Row(
-                                children: [
-                                  SvgPicture.asset(
-                                    'assets/icons/package.svg',
-                                    width: 24,
-                                    height: 24,
-                                    color: ColorTheme.blueColor,
-                                  ),
-                                  SizedBox(
-                                    width: 16,
-                                  ),
-                                  Text(
-                                    'Check Your Package',
-                                    style: TextStyle(
-                                      color: ColorTheme.darkBlueColor,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w900,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            GestureDetector(
-                              onTap: controller.tapCheckPackage,
-                              child: SvgPicture.asset(
-                                'assets/icons/button-arrow.svg',
-                                height: 32,
-                                width: 32,
-                              ),
-                            ),
-                          ],
-                        ),
+        body: SingleChildScrollView(
+          child: Container(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+              gradient: GradientBg.getGradient(),
+            ),
+            child: NestedScrollView(
+              headerSliverBuilder:
+                  (BuildContext context, bool innerBoxIsScrolled) {
+                return [
+                  SliverAppBar(
+                    expandedHeight: 300,
+                    floating: false,
+                    pinned: true,
+                    stretch: true,
+                    backgroundColor: Colors.transparent,
+                    shadowColor: Colors.transparent,
+                    leading: Container(),
+                    flexibleSpace: FlexibleSpaceBar(
+                      stretchModes: [
+                        StretchMode.blurBackground,
+                        StretchMode.zoomBackground,
+                      ],
+                      background: Image.asset(
+                        'assets/images/bg.png',
+                        fit: BoxFit.fitHeight,
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 16,
+                ];
+              },
+              body: Container(
+                height: MediaQuery.of(context).size.height,
+                padding: EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: ColorTheme.whiteColor,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(30),
+                    topRight: Radius.circular(30),
                   ),
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    child: Card(
-                      color: ColorTheme.whiteColor,
-                      elevation: 4,
-                      child: Container(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 8,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Container(
-                              child: Row(
-                                children: [
-                                  SvgPicture.asset(
-                                    'assets/icons/history.svg',
-                                    width: 24,
-                                    height: 24,
-                                    color: ColorTheme.blueColor,
-                                  ),
-                                  SizedBox(
-                                    width: 16,
-                                  ),
-                                  Text(
-                                    'Delivery History',
-                                    style: TextStyle(
-                                      color: ColorTheme.darkBlueColor,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w900,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            GestureDetector(
-                              onTap: controller.tapCheckPackageHistory,
-                              child: SvgPicture.asset(
-                                'assets/icons/button-arrow.svg',
-                                height: 32,
-                                width: 32,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                ),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 8,
                     ),
-                  ),
-                  SizedBox(
-                    height: 16,
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    child: Card(
-                      color: ColorTheme.blueTextBoxColor,
-                      elevation: 4,
-                      child: Container(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 8,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Container(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 8, vertical: 16),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SvgPicture.asset(
-                                    'assets/icons/add-package.svg',
-                                  ),
-                                  SizedBox(
-                                    height: 16,
-                                  ),
-                                  Text(
-                                    'SEND GOODS',
-                                    style: TextStyle(
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      child: Card(
+                        color: ColorTheme.whiteColor,
+                        elevation: 4,
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 16,
+                            vertical: 8,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                child: Row(
+                                  children: [
+                                    SvgPicture.asset(
+                                      'assets/icons/package.svg',
+                                      width: 24,
+                                      height: 24,
                                       color: ColorTheme.blueColor,
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.w900,
                                     ),
-                                  ),
-                                  SizedBox(
-                                    height: 8,
-                                  ),
-                                  Text(
-                                    'Send valuable items to anywhere\nwith easier and secure now',
-                                    style: TextStyle(
-                                      color: ColorTheme.blackColor,
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w500,
+                                    SizedBox(
+                                      width: 16,
                                     ),
-                                  ),
-                                ],
+                                    Text(
+                                      'Check Your Package',
+                                      style: TextStyle(
+                                        color: ColorTheme.darkBlueColor,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w900,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                            GestureDetector(
-                              onTap: controller.tapSendGoods,
-                              child: SvgPicture.asset(
-                                'assets/icons/button-arrow.svg',
-                                height: 32,
-                                width: 32,
+                              GestureDetector(
+                                onTap: controller.tapCheckPackage,
+                                child: SvgPicture.asset(
+                                  'assets/icons/button-arrow.svg',
+                                  height: 32,
+                                  width: 32,
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                    SizedBox(
+                      height: 16,
+                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      child: Card(
+                        color: ColorTheme.whiteColor,
+                        elevation: 4,
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 16,
+                            vertical: 8,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                child: Row(
+                                  children: [
+                                    SvgPicture.asset(
+                                      'assets/icons/history.svg',
+                                      width: 24,
+                                      height: 24,
+                                      color: ColorTheme.blueColor,
+                                    ),
+                                    SizedBox(
+                                      width: 16,
+                                    ),
+                                    Text(
+                                      'Delivery History',
+                                      style: TextStyle(
+                                        color: ColorTheme.darkBlueColor,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w900,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: controller.tapCheckPackageHistory,
+                                child: SvgPicture.asset(
+                                  'assets/icons/button-arrow.svg',
+                                  height: 32,
+                                  width: 32,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 16,
+                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      child: Card(
+                        color: ColorTheme.blueTextBoxColor,
+                        elevation: 4,
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 16,
+                            vertical: 8,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Container(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 8, vertical: 16),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    SvgPicture.asset(
+                                      'assets/icons/add-package.svg',
+                                    ),
+                                    SizedBox(
+                                      height: 16,
+                                    ),
+                                    Text(
+                                      'SEND GOODS',
+                                      style: TextStyle(
+                                        color: ColorTheme.blueColor,
+                                        fontSize: 24,
+                                        fontWeight: FontWeight.w900,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 8,
+                                    ),
+                                    Text(
+                                      'Send valuable items to anywhere\nwith easier and secure now',
+                                      style: TextStyle(
+                                        color: ColorTheme.blackColor,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: controller.tapSendGoods,
+                                child: SvgPicture.asset(
+                                  'assets/icons/button-arrow.svg',
+                                  height: 32,
+                                  width: 32,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

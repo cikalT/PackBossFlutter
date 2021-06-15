@@ -1,4 +1,5 @@
 export 'package:flutter/material.dart';
+import 'package:packboss/helpers/app_preference.dart';
 import 'package:packboss/models/index.dart';
 export 'dart:convert';
 
@@ -18,6 +19,13 @@ class Api {
   printError(dynamic e) {
     resultApi.message = e.toString();
     print('Error Parsing API $runtimeType :$url');
-    print('Error : ${e}');
+    print('Error : $e');
+  }
+
+  generateHeader() async {
+    var token = await AppPreference.getMobileToken();
+    accessToken = token;
+    headers['Authorization'] = 'Bearer $accessToken';
+    print('token: $accessToken');
   }
 }

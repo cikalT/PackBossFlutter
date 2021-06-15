@@ -13,7 +13,6 @@ class RegisterPage extends StatelessWidget {
       builder: (controller) => Scaffold(
         body: SingleChildScrollView(
           child: Container(
-            height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
             padding: EdgeInsets.all(16),
             decoration: BoxDecoration(
@@ -86,24 +85,6 @@ class RegisterPage extends StatelessWidget {
                       ),
                       Container(
                         child: TextField(
-                          controller: controller.usernameController,
-                          decoration: InputDecoration(
-                              filled: true,
-                              fillColor: ColorTheme.textBoxColor,
-                              border: OutlineInputBorder(
-                                borderRadius: const BorderRadius.all(
-                                  Radius.circular(8),
-                                ),
-                                borderSide: BorderSide.none,
-                              ),
-                              hintText: 'Username'),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 16,
-                      ),
-                      Container(
-                        child: TextField(
                           controller: controller.emailController,
                           decoration: InputDecoration(
                               filled: true,
@@ -115,6 +96,25 @@ class RegisterPage extends StatelessWidget {
                                 borderSide: BorderSide.none,
                               ),
                               hintText: 'Email'),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 16,
+                      ),
+                      Container(
+                        child: TextField(
+                          controller: controller.phoneController,
+                          decoration: InputDecoration(
+                              filled: true,
+                              fillColor: ColorTheme.textBoxColor,
+                              border: OutlineInputBorder(
+                                borderRadius: const BorderRadius.all(
+                                  Radius.circular(8),
+                                ),
+                                borderSide: BorderSide.none,
+                              ),
+                              hintText: 'Phone'),
+                          keyboardType: TextInputType.phone,
                         ),
                       ),
                       SizedBox(
@@ -187,7 +187,7 @@ class RegisterPage extends StatelessWidget {
                                 ),
                           onPressed: () {
                             if (!controller.isLoading) {
-                              // controller.tapSignUp();
+                              controller.tapSignUp();
                             }
                           },
                         ),

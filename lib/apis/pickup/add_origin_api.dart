@@ -1,22 +1,28 @@
 import 'package:http/http.dart';
 import 'package:packboss/apis/api.dart';
 import 'package:packboss/helpers/app_config.dart';
-import 'package:packboss/helpers/app_preference.dart';
 import 'package:packboss/models/index.dart';
 
-class LoginApi extends Api {
-  String url = '${AppConfig.getApiUrl}/auth/login';
+class AddOriginAPi extends Api {
+  String url = '${AppConfig.getApiUrl}/auth/register';
 
   Future<ResultApi> request({
-    @required String email,
-    @required String password,
+    @required String countryName,
+    @required String provinceName,
+    @required String regionName,
+    @required String postalCode,
+    @required String detailAddress,
   }) async {
     payload = {
-      "email": email,
-      "password": password,
+      "country_name": countryName,
+      "province_name": provinceName,
+      "region_name": regionName,
+      "postal_code": postalCode,
+      "detail_address": detailAddress,
     };
 
     try {
+      generateHeader();
       var response =
           await post(url, body: json.encode(payload), headers: headers);
 
@@ -24,7 +30,7 @@ class LoginApi extends Api {
       if (resultApi.statusCode == 200) {
         var responseBody = json.decode(response.body);
         print(responseBody);
-        var data = GetLoginResponse.fromJson(responseBody);
+        var data = GetAddOriginResponse.fromJson(responseBody);
         resultApi.status = true;
         resultApi.data = data?.content;
       }

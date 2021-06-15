@@ -5,3 +5,7 @@ export 'auth/responses/get_login_response.dart';
 export 'auth/responses/get_register_response.dart';
 export 'misc/result_api.dart';
 export 'misc/screen_arguments.dart';
+export 'pickup/models/destination_data.dart';
+export 'pickup/models/origin_data.dart';
+export 'pickup/responses/get_add_destination_response.dart';
+export 'pickup/responses/get_add_origin_response.dart';

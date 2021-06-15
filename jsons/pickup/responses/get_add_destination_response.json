@@ -1,0 +1,5 @@
+{
+  "statusCode": 200,
+  "messages": "Success",
+  "content": "$../models/destination_data"
+}
