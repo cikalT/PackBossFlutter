@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:packboss/apis/auth/register_api.dart';
+import 'package:packboss/helpers/index.dart';
 import 'package:packboss/models/index.dart';
 import 'package:packboss/routes/index.dart';
 import 'package:packboss/themes/index.dart';
@@ -56,6 +57,7 @@ class RegisterController extends GetxController {
     if (result.status) {
       registerData = result.data;
       print('sukses');
+      await AppPreference.setMobileToken(registerData.accessToken);
       Get.snackbar('Berhasil', 'Selamat datang');
       Get.toNamed(AppRoutes.homePage);
       isLoading = false;

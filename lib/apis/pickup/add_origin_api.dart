@@ -4,7 +4,7 @@ import 'package:packboss/helpers/app_config.dart';
 import 'package:packboss/models/index.dart';
 
 class AddOriginAPi extends Api {
-  String url = '${AppConfig.getApiUrl}/auth/register';
+  String url = '${AppConfig.getApiUrl}/package/origin';
 
   Future<ResultApi> request({
     @required String countryName,

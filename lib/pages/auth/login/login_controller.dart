@@ -4,6 +4,7 @@ import 'package:packboss/apis/auth/login_api.dart';
 import 'package:packboss/helpers/index.dart';
 import 'package:packboss/models/index.dart';
 import 'package:packboss/routes/index.dart';
+import 'package:packboss/themes/index.dart';
 
 class LoginController extends GetxController {
   bool isLoading = false;
@@ -49,7 +50,8 @@ class LoginController extends GetxController {
       update();
     } else {
       print('gagal');
-      Get.snackbar('Gagal', 'Periksa form data!');
+      Get.snackbar('Gagal', 'Periksa form data!',
+          backgroundColor: ColorTheme.whiteColor);
       isLoading = false;
       update();
     }

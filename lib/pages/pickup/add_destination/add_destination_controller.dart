@@ -8,6 +8,14 @@ import 'package:packboss/themes/index.dart';
 class AddDestinationController extends GetxController {
   bool isLoading = false;
 
+  final countryNameController = TextEditingController();
+  final provinceNameController = TextEditingController();
+  final regionNameController = TextEditingController();
+  final postCalCodeController = TextEditingController();
+  final detailAddressCodeController = TextEditingController();
+
+  DestinationData destinationData;
+
   @override
   void onInit() async {
     super.onInit();
