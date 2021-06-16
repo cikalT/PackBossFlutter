@@ -1,23 +1,23 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'get_add_destination_response.dart';
+part of 'get_saved_origin_response.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-GetAddDestinationResponse _$GetAddDestinationResponseFromJson(
+GetSavedOriginResponse _$GetSavedOriginResponseFromJson(
     Map<String, dynamic> json) {
-  return GetAddDestinationResponse()
+  return GetSavedOriginResponse()
     ..statusCode = json['statusCode'] as int
     ..messages = json['messages'] as String
     ..content = json['content'] == null
         ? null
-        : AddDestinationData.fromJson(json['content'] as Map<String, dynamic>);
+        : SavedOriginData.fromJson(json['content'] as Map<String, dynamic>);
 }
 
-Map<String, dynamic> _$GetAddDestinationResponseToJson(
-        GetAddDestinationResponse instance) =>
+Map<String, dynamic> _$GetSavedOriginResponseToJson(
+        GetSavedOriginResponse instance) =>
     <String, dynamic>{
       'statusCode': instance.statusCode,
       'messages': instance.messages,

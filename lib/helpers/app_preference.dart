@@ -1,8 +1,14 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppPreference {
+  //user
   static final String userLogin = 'user-login';
   static final String userToken = 'user-token';
+  static final String userId = 'user-id';
+  static final String userName = 'user-name';
+  static final String userEmail = 'user-email';
+  static final String userPhone = 'user-phone';
+  //package
   static final String reqOriginId = 'req-origin-id';
   static final String reqOriginName = 'req-origin-name';
   static final String reqOriginAddress = 'req-origin-address';
@@ -14,6 +20,7 @@ class AppPreference {
   static final String reqPackageType = 'req-package-type';
   static final String reqPackageWeight = 'req-package-weight';
 
+  //----------------user----------------
   static Future<Null> setLogin(bool status) async {
     final prefs = await SharedPreferences.getInstance();
     prefs.setBool(userLogin, status);
@@ -34,6 +41,50 @@ class AppPreference {
   static Future<String> getMobileToken() async {
     final prefs = await SharedPreferences.getInstance();
     return prefs.getString(userToken) ?? '';
+  }
+
+  static Future<bool> setUserID(String data) async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString(userId, data);
+    return true;
+  }
+
+  static Future<String> getUserId() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(userId) ?? '';
+  }
+
+  static Future<bool> setUserName(String data) async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString(userName, data);
+    return true;
+  }
+
+  static Future<String> getUserName() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(userName) ?? '';
+  }
+
+  static Future<bool> setUserEmail(String data) async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString(userEmail, data);
+    return true;
+  }
+
+  static Future<String> getUserEmail() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(userEmail) ?? '';
+  }
+
+  static Future<bool> setUserPhone(String data) async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString(userPhone, data);
+    return true;
+  }
+
+  static Future<String> getUserPhone() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(userPhone) ?? '';
   }
 
   //----------------request pickup----------------

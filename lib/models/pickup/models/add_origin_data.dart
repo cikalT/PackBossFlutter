@@ -1,12 +1,13 @@
 import 'package:json_annotation/json_annotation.dart';
 
 
-part 'destination_data.g.dart';
+part 'add_origin_data.g.dart';
 
 @JsonSerializable()
-class DestinationData {
-      DestinationData();
+class AddOriginData {
+      AddOriginData();
 
+  @JsonKey(name: 'id_user') String idUser;
   @JsonKey(name: 'country_name') String countryName;
   @JsonKey(name: 'province_name') String provinceName;
   @JsonKey(name: 'region_name') String regionName;
@@ -16,6 +17,6 @@ class DestinationData {
   @JsonKey(name: 'updated_at') String updatedAt;
   @JsonKey(name: 'created_at') String createdAt;
 
-  factory DestinationData.fromJson(Map<String,dynamic> json) => _$DestinationDataFromJson(json);
-  Map<String, dynamic> toJson() => _$DestinationDataToJson(this);
+  factory AddOriginData.fromJson(Map<String,dynamic> json) => _$AddOriginDataFromJson(json);
+  Map<String, dynamic> toJson() => _$AddOriginDataToJson(this);
 }

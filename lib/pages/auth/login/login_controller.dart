@@ -43,9 +43,14 @@ class LoginController extends GetxController {
       loginData = result.data;
       print('sukses');
       Get.snackbar('Berhasil', 'Selamat datang');
-      await AppPreference.setMobileToken(loginData.accessToken);
-      Get.toNamed(AppRoutes.homePage,
-          arguments: ScreenArguments()..id = 'id nya mas');
+      Future.delayed(Duration(milliseconds: 200), () async {
+        await AppPreference.setMobileToken(loginData.accessToken);
+        await AppPreference.setUserID(loginData.user.id);
+        await AppPreference.setUserName(loginData.user.name);
+        await AppPreference.setUserEmail(loginData.user.email);
+        await AppPreference.setUserPhone(loginData.user.phone);
+      });
+      Get.offNamed(AppRoutes.homePage);
       isLoading = false;
       update();
     } else {

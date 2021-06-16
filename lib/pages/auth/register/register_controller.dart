@@ -57,9 +57,8 @@ class RegisterController extends GetxController {
     if (result.status) {
       registerData = result.data;
       print('sukses');
-      await AppPreference.setMobileToken(registerData.accessToken);
-      Get.snackbar('Berhasil', 'Selamat datang');
-      Get.toNamed(AppRoutes.homePage);
+      Get.snackbar('Berhasil', 'Silahkan login');
+      Get.offNamed(AppRoutes.loginPage);
       isLoading = false;
       update();
     } else {

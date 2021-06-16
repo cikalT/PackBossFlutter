@@ -25,7 +25,12 @@ class Api {
   generateHeader() async {
     var token = await AppPreference.getMobileToken();
     accessToken = token;
-    headers['Authorization'] = 'Bearer $accessToken';
-    print('token: $accessToken');
+    headers = {
+      // 'Content-Type': 'application/json',
+      // 'Accept': 'application/json',
+      'Authorization': 'Bearer $accessToken',
+    };
+    // headers['Authorization'] = 'Bearer $accessToken';
+    print('headers: $headers');
   }
 }

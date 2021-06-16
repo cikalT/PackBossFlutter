@@ -1,20 +1,14 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:packboss/apis/auth/register_api.dart';
+import 'package:packboss/helpers/index.dart';
 import 'package:packboss/models/index.dart';
 import 'package:packboss/routes/index.dart';
 import 'package:packboss/themes/index.dart';
 
-class AddDestinationController extends GetxController {
+class IndexController extends GetxController {
   bool isLoading = false;
-
-  final countryNameController = TextEditingController();
-  final provinceNameController = TextEditingController();
-  final regionNameController = TextEditingController();
-  final postCalCodeController = TextEditingController();
-  final detailAddressCodeController = TextEditingController();
-
-  AddDestinationData addDestinationData;
+  bool isLogin = false;
 
   @override
   void onInit() async {
@@ -23,6 +17,14 @@ class AddDestinationController extends GetxController {
 
   @override
   void onReady() async {
+    Future.delayed(Duration(milliseconds: 700), () async {
+      isLogin = await AppPreference.isLogin();
+      if (isLogin) {
+        Get.offNamed(AppRoutes.homePage);
+      } else {
+        Get.offNamed(AppRoutes.loginPage);
+      }
+    });
     super.onReady();
   }
 

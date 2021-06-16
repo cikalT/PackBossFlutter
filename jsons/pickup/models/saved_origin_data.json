@@ -1,0 +1,12 @@
+{
+  "id": "409da66a-b7b4-406e-96b6-dd8e7f1ccc57",
+  "id_user": "6244f31c-8871-41b7-9e62-ec454e105f23",
+  "country_name": "Indonesia",
+  "province_name": "Bali",
+  "region_name": "Denpasar",
+  "postal_code": "80239",
+  "detail_address": "Jalan Kenyeri No 85, Denpasar",
+  "created_at": "2021-06-16T08:52:53.000000Z",
+  "updated_at": "2021-06-16T08:52:53.000000Z",
+  "users": "$../../auth/models/user_data"
+}

@@ -12,7 +12,7 @@ GetAddOriginResponse _$GetAddOriginResponseFromJson(Map<String, dynamic> json) {
     ..messages = json['messages'] as String
     ..content = json['content'] == null
         ? null
-        : OriginData.fromJson(json['content'] as Map<String, dynamic>);
+        : AddOriginData.fromJson(json['content'] as Map<String, dynamic>);
 }
 
 Map<String, dynamic> _$GetAddOriginResponseToJson(

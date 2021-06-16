@@ -1,5 +1,5 @@
 {
   "statusCode": 200,
   "messages": "Success",
-  "content": "$../models/origin_data"
+  "content": "$../models/add_origin_data"
 }

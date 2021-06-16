@@ -1,5 +1,5 @@
 {
   "statusCode": 200,
   "messages": "Success",
-  "content": "$../models/destination_data"
+  "content": "$../models/add_destination_data"
 }

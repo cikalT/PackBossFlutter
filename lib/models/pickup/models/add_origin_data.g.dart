@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'origin_data.dart';
+part of 'add_origin_data.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-OriginData _$OriginDataFromJson(Map<String, dynamic> json) {
-  return OriginData()
+AddOriginData _$AddOriginDataFromJson(Map<String, dynamic> json) {
+  return AddOriginData()
     ..idUser = json['id_user'] as String
     ..countryName = json['country_name'] as String
     ..provinceName = json['province_name'] as String
@@ -19,7 +19,7 @@ OriginData _$OriginDataFromJson(Map<String, dynamic> json) {
     ..createdAt = json['created_at'] as String;
 }
 
-Map<String, dynamic> _$OriginDataToJson(OriginData instance) =>
+Map<String, dynamic> _$AddOriginDataToJson(AddOriginData instance) =>
     <String, dynamic>{
       'id_user': instance.idUser,
       'country_name': instance.countryName,

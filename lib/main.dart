@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:packboss/pages/index_page.dart';
 import 'package:packboss/pages/misc/unknown_page.dart';
+import 'package:packboss/pages/pickup/success/pickup_success_page.dart';
 
 import 'pages/auth/login/login_page.dart';
 import 'routes/index.dart';
@@ -19,7 +21,7 @@ void main() {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: LoginPage(),
+      home: IndexPage(),
       getPages: AppPages.pages,
       unknownRoute: GetPage(
         name: 'unknown',
@@ -39,7 +41,7 @@ class MyApp extends StatelessWidget {
       //   primarySwatch: Colors.transparent,
       // ),
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: IndexPage(),
     );
   }
 }
