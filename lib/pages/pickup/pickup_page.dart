@@ -534,6 +534,32 @@ class PickupPage extends StatelessWidget {
                     ),
                   ),
                 ),
+                SizedBox(
+                  height: 16,
+                ),
+                Container(
+                  height: 48,
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      elevation: 0,
+                      primary: ColorTheme.buttonActiveColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    child: Text(
+                      'Request Pickup',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: ColorTheme.whiteColor,
+                        fontWeight: FontWeight.w800,
+                        fontSize: 16,
+                      ),
+                    ),
+                    onPressed: null,
+                  ),
+                ),
               ],
             ),
           ),

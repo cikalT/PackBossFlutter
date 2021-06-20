@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:packboss/routes/app_pages.dart';
@@ -60,6 +61,49 @@ class AddDestinationPage extends StatelessWidget {
                       ),
                       SizedBox(
                         height: 16,
+                      ),
+                      SizedBox(
+                        height: 32,
+                        child: TextField(
+                          controller: controller.recipientNameController,
+                          textAlign: TextAlign.start,
+                          decoration: InputDecoration(
+                              contentPadding: EdgeInsets.only(top: 8, left: 8),
+                              filled: true,
+                              fillColor: ColorTheme.textBoxColor,
+                              border: OutlineInputBorder(
+                                borderRadius: const BorderRadius.all(
+                                  Radius.circular(4),
+                                ),
+                                borderSide: BorderSide.none,
+                              ),
+                              hintText: 'Recipient Name'),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      SizedBox(
+                        height: 32,
+                        child: TextField(
+                          controller: controller.recipientPhoneController,
+                          keyboardType: TextInputType.phone,
+                          textAlign: TextAlign.start,
+                          decoration: InputDecoration(
+                              contentPadding: EdgeInsets.only(top: 8, left: 8),
+                              filled: true,
+                              fillColor: ColorTheme.textBoxColor,
+                              border: OutlineInputBorder(
+                                borderRadius: const BorderRadius.all(
+                                  Radius.circular(4),
+                                ),
+                                borderSide: BorderSide.none,
+                              ),
+                              hintText: 'Recipient Phone'),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 8,
                       ),
                       SizedBox(
                         height: 32,
@@ -204,16 +248,21 @@ class AddDestinationPage extends StatelessWidget {
                               borderRadius: BorderRadius.circular(8),
                             ),
                           ),
-                          child: Text(
-                            'Save Address',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: ColorTheme.whiteColor,
-                              fontWeight: FontWeight.w800,
-                              fontSize: 16,
-                            ),
-                          ),
-                          onPressed: () {},
+                          child: !controller.isButtonLoading
+                              ? Text(
+                                  'Save Address',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: ColorTheme.whiteColor,
+                                    fontWeight: FontWeight.w800,
+                                    fontSize: 16,
+                                  ),
+                                )
+                              : Container(
+                                  padding: EdgeInsets.symmetric(vertical: 8),
+                                  child: CircularProgressIndicator(),
+                                ),
+                          onPressed: controller.tapSaveDestination,
                         ),
                       ),
                       SizedBox(

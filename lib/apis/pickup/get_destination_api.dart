@@ -4,11 +4,11 @@ import 'package:packboss/helpers/app_config.dart';
 import 'package:packboss/helpers/index.dart';
 import 'package:packboss/models/index.dart';
 
-class GetOriginAPi extends Api {
-  String url = '${AppConfig.getApiUrl}/package/origin/show-by-user';
+class GetDestinationAPi extends Api {
+  String url = '${AppConfig.getApiUrl}/package/destination';
 
-  Future<ResultApi> request(String userId) async {
-    url += '/$userId';
+  Future<ResultApi> request(String destinationId) async {
+    url += '/$destinationId';
     var token = await AppPreference.getMobileToken();
     var headerLoad = headers = {
       'Content-Type': 'application/json',

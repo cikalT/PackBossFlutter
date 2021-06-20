@@ -3,12 +3,21 @@ import 'package:shared_preferences/shared_preferences.dart';
 class AppPreference {
   //user
   static final String userLogin = 'user-login';
+  static final String userData = 'user-data';
   static final String userToken = 'user-token';
   static final String userId = 'user-id';
   static final String userName = 'user-name';
   static final String userEmail = 'user-email';
   static final String userPhone = 'user-phone';
   //package
+  static final String destinationSaved = 'req-recipient-saved';
+  static final String reqRecipientName = 'req-recipient-name';
+  static final String reqRecipientPhone = 'req-recipient-phone';
+  static final String reqRecipientCountryName = 'req-recipient-country';
+  static final String reqRecipientProvinceName = 'req-recipient-province';
+  static final String reqRecipientRegionName = 'req-recipient-region';
+  static final String reqRecipientPostCalCode = 'req-recipient-post';
+  static final String reqRecipientDetailAddress = 'req-recipient-address';
   static final String reqOriginId = 'req-origin-id';
   static final String reqOriginName = 'req-origin-name';
   static final String reqOriginAddress = 'req-origin-address';
@@ -88,6 +97,93 @@ class AppPreference {
   }
 
   //----------------request pickup----------------
+  static Future<Null> setDestinationSaved(bool status) async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setBool(destinationSaved, status);
+  }
+
+  static Future<bool> isDestinationSaved() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getBool(destinationSaved) ?? false;
+  }
+
+  static Future<bool> setReqRecipientName(String data) async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString(reqRecipientName, data);
+    return true;
+  }
+
+  static Future<String> getReqRecipientName() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(reqRecipientName) ?? '';
+  }
+
+  static Future<bool> setReqRecipientPhone(String data) async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString(reqRecipientPhone, data);
+    return true;
+  }
+
+  static Future<String> getReqRecipientPhone() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(reqRecipientPhone) ?? '';
+  }
+
+  static Future<bool> setReqRecipientCountryName(String data) async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString(reqRecipientCountryName, data);
+    return true;
+  }
+
+  static Future<String> getReqRecipientCountryName() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(reqRecipientCountryName) ?? '';
+  }
+
+  static Future<bool> setReqRecipientProvinceName(String data) async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString(reqRecipientProvinceName, data);
+    return true;
+  }
+
+  static Future<String> getReqRecipientProvinceName() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(reqRecipientProvinceName) ?? '';
+  }
+
+  static Future<bool> setReqRecipientRegionName(String data) async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString(reqRecipientRegionName, data);
+    return true;
+  }
+
+  static Future<String> getReqRecipientRegionName() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(reqRecipientRegionName) ?? '';
+  }
+
+  static Future<bool> setReqRecipientPostCalCode(String data) async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString(reqRecipientPostCalCode, data);
+    return true;
+  }
+
+  static Future<String> getReqRecipientPostCalCode() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(reqRecipientPostCalCode) ?? '';
+  }
+
+  static Future<bool> setReqRecipientDetailAddress(String data) async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString(reqRecipientDetailAddress, data);
+    return true;
+  }
+
+  static Future<String> getReqRecipientDetailAddress() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(reqRecipientDetailAddress) ?? '';
+  }
+
   static Future<bool> setReqOriginId(String data) async {
     final prefs = await SharedPreferences.getInstance();
     prefs.setString(reqOriginId, data);

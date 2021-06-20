@@ -4,11 +4,26 @@ import 'package:packboss/helpers/app_config.dart';
 import 'package:packboss/helpers/index.dart';
 import 'package:packboss/models/index.dart';
 
-class GetOriginAPi extends Api {
-  String url = '${AppConfig.getApiUrl}/package/origin/show-by-user';
+class AddPackageAPi extends Api {
+  String url = '${AppConfig.getApiUrl}/package/store';
 
-  Future<ResultApi> request(String userId) async {
-    url += '/$userId';
+  Future<ResultApi> request({
+    @required String category,
+    @required String packageName,
+    @required String recipientName,
+    @required String recipientPhone,
+    @required String weight,
+    @required String dimension,
+  }) async {
+    payload = {
+      "category": category,
+      "package_name": packageName,
+      "recipient_name": recipientName,
+      "recipient_phone": recipientPhone,
+      "weight": weight,
+      "dimension": dimension,
+    };
+
     var token = await AppPreference.getMobileToken();
     var headerLoad = headers = {
       'Content-Type': 'application/json',
@@ -17,14 +32,15 @@ class GetOriginAPi extends Api {
 
     try {
       generateHeader();
-      var response = await get(url, headers: headerLoad);
+      var response =
+          await post(url, body: json.encode(payload), headers: headerLoad);
 
       var responseBody = json.decode(response.body);
       print(responseBody);
 
       resultApi.statusCode = response.statusCode;
       if (resultApi.statusCode == 200) {
-        var data = GetSavedOriginResponse.fromJson(responseBody);
+        var data = GetAddPackageResponse.fromJson(responseBody);
         resultApi.status = true;
         resultApi.data = data?.content;
       }

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:packboss/apis/auth/register_api.dart';
 import 'package:packboss/apis/pickup/add_origin_api.dart';
 import 'package:packboss/apis/pickup/get_origin_api.dart';
+import 'package:packboss/apis/pickup/update_origin_api.dart';
 import 'package:packboss/helpers/index.dart';
 import 'package:packboss/models/index.dart';
 import 'package:packboss/routes/index.dart';
@@ -10,6 +11,8 @@ import 'package:packboss/themes/index.dart';
 
 class AddOriginController extends GetxController {
   bool isLoading = false;
+  bool isButtonLoading = false;
+  bool isDataSaved = false;
 
   final countryNameController = TextEditingController();
   final provinceNameController = TextEditingController();
@@ -39,19 +42,29 @@ class AddOriginController extends GetxController {
   }
 
   getSavedOrigin() async {
+    isLoading = true;
+    update();
     String userId = await AppPreference.getUserId();
     var result = await GetOriginAPi().request(userId);
     if (result.status) {
       savedOriginData = result.data;
+      isDataSaved = true;
+      countryNameController.text = savedOriginData.countryName;
+      provinceNameController.text = savedOriginData.provinceName;
+      regionNameController.text = savedOriginData.regionName;
+      postCalCodeController.text = savedOriginData.postalCode;
+      detailAddressCodeController.text = savedOriginData.detailAddress;
+      await AppPreference.setReqOriginId(savedOriginData.id);
       isLoading = false;
       update();
     } else {
-      Get.back();
+      isLoading = false;
+      update();
     }
   }
 
   tapSaveAddress() async {
-    isLoading = true;
+    isButtonLoading = true;
     update();
     String countryName = countryNameController.text;
     String provinceName = provinceNameController.text;
@@ -68,9 +81,41 @@ class AddOriginController extends GetxController {
       addOriginData = result.data;
       await setPreference();
       print('data: ${addOriginData.id}');
-      Get.snackbar('Berhasil', 'Selamat datang');
+      isButtonLoading = false;
+      update();
+      Get.back();
+    } else {
+      print('gagal');
+      Get.snackbar('Gagal', 'Periksa form data!',
+          backgroundColor: ColorTheme.whiteColor);
       isLoading = false;
       update();
+    }
+  }
+
+  tapUpdateAddress() async {
+    isButtonLoading = true;
+    update();
+    String originId = await AppPreference.getReqOriginId();
+    String countryName = countryNameController.text;
+    String provinceName = provinceNameController.text;
+    String regionName = regionNameController.text;
+    String postalCode = postCalCodeController.text;
+    String detailAddress = detailAddressCodeController.text;
+    var result = await UpdateOriginAPi().request(
+        originId: originId,
+        countryName: countryName,
+        provinceName: provinceName,
+        regionName: regionName,
+        postalCode: postalCode,
+        detailAddress: detailAddress);
+    if (result.status) {
+      addOriginData = result.data;
+      await setPreference();
+      print('data: ${addOriginData.id}');
+      isButtonLoading = false;
+      update();
+      Get.back();
     } else {
       print('gagal');
       Get.snackbar('Gagal', 'Periksa form data!',

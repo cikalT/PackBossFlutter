@@ -4,11 +4,10 @@ import 'package:packboss/helpers/app_config.dart';
 import 'package:packboss/helpers/index.dart';
 import 'package:packboss/models/index.dart';
 
-class GetOriginAPi extends Api {
-  String url = '${AppConfig.getApiUrl}/package/origin/show-by-user';
+class GetPackageCategoryApi extends Api {
+  String url = '${AppConfig.getApiUrl}/package/category';
 
-  Future<ResultApi> request(String userId) async {
-    url += '/$userId';
+  Future<ResultApi> request() async {
     var token = await AppPreference.getMobileToken();
     var headerLoad = headers = {
       'Content-Type': 'application/json',
@@ -24,9 +23,9 @@ class GetOriginAPi extends Api {
 
       resultApi.statusCode = response.statusCode;
       if (resultApi.statusCode == 200) {
-        var data = GetSavedOriginResponse.fromJson(responseBody);
+        var data = GetPackageCategoryResponse.fromJson(responseBody);
         resultApi.status = true;
-        resultApi.data = data?.content;
+        resultApi.listData = data?.content;
       }
     } catch (e) {
       printError(e);

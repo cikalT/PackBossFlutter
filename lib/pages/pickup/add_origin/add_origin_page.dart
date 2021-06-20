@@ -222,18 +222,26 @@ class AddOriginPage extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(8),
                                   ),
                                 ),
-                                child: Text(
-                                  'Save Address',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: ColorTheme.whiteColor,
-                                    fontWeight: FontWeight.w800,
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                onPressed: () {
-                                  controller.tapSaveAddress();
-                                },
+                                child: !controller.isButtonLoading
+                                    ? Text(
+                                        controller.isDataSaved
+                                            ? 'Update Address'
+                                            : 'Save Address',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: ColorTheme.whiteColor,
+                                          fontWeight: FontWeight.w800,
+                                          fontSize: 16,
+                                        ),
+                                      )
+                                    : Container(
+                                        padding:
+                                            EdgeInsets.symmetric(vertical: 8),
+                                        child: CircularProgressIndicator(),
+                                      ),
+                                onPressed: controller.isDataSaved
+                                    ? controller.tapUpdateAddress
+                                    : controller.tapSaveAddress,
                               ),
                             ),
                             SizedBox(
