@@ -1,0 +1,11 @@
+{
+  "id": "ee2eedc2-46cc-4afb-bde5-daf8e7fafb02",
+  "id_package": "8c4122e7-cb91-4b33-a0ea-364fff265515",
+  "receipt_number": "NY4D2YDLKDM7ZMC",
+  "price_per_kg": "100",
+  "total_price": "200",
+  "status": "waiting-for-pickup",
+  "created_at": "2021-06-20T15:43:35.000000Z",
+  "updated_at": "2021-06-20T15:43:35.000000Z",
+  "package": "$package_data"
+}

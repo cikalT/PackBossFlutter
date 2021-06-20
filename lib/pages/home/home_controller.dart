@@ -50,7 +50,9 @@ class HomeController extends GetxController {
     print('token: $token');
   }
 
-  tapCheckPackageHistory() {}
+  tapCheckPackageHistory() {
+    Get.toNamed(AppRoutes.historyPage);
+  }
 
   tapSendGoods() {
     Get.toNamed(AppRoutes.pickupPage);
