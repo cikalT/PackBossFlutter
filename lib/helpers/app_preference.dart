@@ -10,7 +10,6 @@ class AppPreference {
   static final String userEmail = 'user-email';
   static final String userPhone = 'user-phone';
   //package
-  static final String destinationSaved = 'req-recipient-saved';
   static final String reqRecipientName = 'req-recipient-name';
   static final String reqRecipientPhone = 'req-recipient-phone';
   static final String reqRecipientCountryName = 'req-recipient-country';
@@ -18,16 +17,25 @@ class AppPreference {
   static final String reqRecipientRegionName = 'req-recipient-region';
   static final String reqRecipientPostCalCode = 'req-recipient-post';
   static final String reqRecipientDetailAddress = 'req-recipient-address';
+  static final String originSaved = 'req-origin-saved';
   static final String reqOriginId = 'req-origin-id';
   static final String reqOriginName = 'req-origin-name';
   static final String reqOriginAddress = 'req-origin-address';
+  static final String destinationSaved = 'req-recipient-saved';
   static final String reqDestinationId = 'req-destination-id';
   static final String reqDestinationName = 'req-destination-name';
   static final String reqDestinationAddress = 'req-destination-address';
+  static final String packageSaved = 'req-package-saved';
   static final String reqPackageId = 'req-package-id';
   static final String reqPackageName = 'req-package-name';
   static final String reqPackageType = 'req-package-type';
   static final String reqPackageWeight = 'req-package-weight';
+  static final String reqPackageLength = 'req-package-length';
+  static final String reqPackageWidth = 'req-package-width';
+  static final String reqPackageHeight = 'req-package-height';
+  static final String resiNumber = 'resi-number';
+  static final String totalMoney = 'total-money';
+  static final String datePackage = 'date-package';
 
   //----------------user----------------
   static Future<Null> setLogin(bool status) async {
@@ -97,6 +105,16 @@ class AppPreference {
   }
 
   //----------------request pickup----------------
+  static Future<Null> setOriginSaved(bool status) async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setBool(originSaved, status);
+  }
+
+  static Future<bool> isOriginSaved() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getBool(originSaved) ?? false;
+  }
+
   static Future<Null> setDestinationSaved(bool status) async {
     final prefs = await SharedPreferences.getInstance();
     prefs.setBool(destinationSaved, status);
@@ -250,6 +268,16 @@ class AppPreference {
     return prefs.getString(reqDestinationAddress) ?? '';
   }
 
+  static Future<Null> setPackageSaved(bool status) async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setBool(destinationSaved, status);
+  }
+
+  static Future<bool> isPackageSaved() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getBool(destinationSaved) ?? false;
+  }
+
   static Future<bool> setReqPackageId(String data) async {
     final prefs = await SharedPreferences.getInstance();
     prefs.setString(reqPackageId, data);
@@ -292,5 +320,71 @@ class AppPreference {
   static Future<String> getReqPackageWeight() async {
     final prefs = await SharedPreferences.getInstance();
     return prefs.getString(reqPackageWeight) ?? '';
+  }
+
+  static Future<bool> setReqPackageLength(String data) async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString(reqPackageLength, data);
+    return true;
+  }
+
+  static Future<String> getReqPackageLength() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(reqPackageLength) ?? '';
+  }
+
+  static Future<bool> setReqPackageWidth(String data) async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString(reqPackageWidth, data);
+    return true;
+  }
+
+  static Future<String> getReqPackageWidth() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(reqPackageWidth) ?? '';
+  }
+
+  static Future<bool> setReqPackageHeight(String data) async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString(reqPackageHeight, data);
+    return true;
+  }
+
+  static Future<String> getReqPackageHeight() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(reqPackageHeight) ?? '';
+  }
+
+  static Future<bool> setResiNumber(String data) async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString(resiNumber, data);
+    return true;
+  }
+
+  static Future<String> getResiNumber() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(resiNumber) ?? '';
+  }
+
+  static Future<bool> setTotalMoney(String data) async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString(totalMoney, data);
+    return true;
+  }
+
+  static Future<String> getTotalMoney() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(totalMoney) ?? '';
+  }
+
+  static Future<bool> setDatePackage(String data) async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString(datePackage, data);
+    return true;
+  }
+
+  static Future<String> getDatePackage() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(datePackage) ?? '';
   }
 }

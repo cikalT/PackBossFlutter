@@ -71,7 +71,7 @@ class AddOriginController extends GetxController {
     String regionName = regionNameController.text;
     String postalCode = postCalCodeController.text;
     String detailAddress = detailAddressCodeController.text;
-    var result = await AddOriginAPi().request(
+    var result = await AddOriginApi().request(
         countryName: countryName,
         provinceName: provinceName,
         regionName: regionName,
@@ -126,6 +126,7 @@ class AddOriginController extends GetxController {
   }
 
   setPreference() async {
+    await AppPreference.setOriginSaved(true);
     await AppPreference.setReqOriginId(addOriginData.id);
     await AppPreference.setReqOriginAddress(addOriginData.detailAddress);
   }

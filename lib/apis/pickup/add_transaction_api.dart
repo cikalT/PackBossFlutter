@@ -4,24 +4,16 @@ import 'package:packboss/helpers/app_config.dart';
 import 'package:packboss/helpers/index.dart';
 import 'package:packboss/models/index.dart';
 
-class AddPackageApi extends Api {
-  String url = '${AppConfig.getApiUrl}/package/store';
+class AddTransactionApi extends Api {
+  String url = '${AppConfig.getApiUrl}/transaction';
 
   Future<ResultApi> request({
-    @required String category,
-    @required String packageName,
-    @required String recipientName,
-    @required String recipientPhone,
-    @required String weight,
-    @required String dimension,
+    @required String destinationId,
+    @required String packageId,
   }) async {
     payload = {
-      "category": category,
-      "package_name": packageName,
-      "recepient_name": recipientName,
-      "recepient_phone": recipientPhone,
-      "weight": weight,
-      "dimension": dimension,
+      "id_destination": destinationId,
+      "id_package": packageId,
     };
 
     var token = await AppPreference.getMobileToken();
@@ -40,7 +32,7 @@ class AddPackageApi extends Api {
 
       resultApi.statusCode = response.statusCode;
       if (resultApi.statusCode == 200) {
-        var data = GetAddPackageResponse.fromJson(responseBody);
+        var data = GetAddTransactionResponse.fromJson(responseBody);
         resultApi.status = true;
         resultApi.data = data?.content;
       }

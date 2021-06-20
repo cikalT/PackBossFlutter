@@ -34,7 +34,7 @@ class PickupSuccessPage extends StatelessWidget {
           leading: Container(),
         ),
         body: SingleChildScrollView(
-          physics: NeverScrollableScrollPhysics(),
+          // physics: NeverScrollableScrollPhysics(),
           child: Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
@@ -59,7 +59,37 @@ class PickupSuccessPage extends StatelessWidget {
                 Container(
                   alignment: Alignment.center,
                   child: Text(
-                    'Our Team Will Pickup\nYour Package at 10.20',
+                    'Package Number: ${controller.resiNumber}',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: ColorTheme.whiteColor,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 8,
+                ),
+                Container(
+                  alignment: Alignment.center,
+                  child: Text(
+                    'Please prepare your money for : ${controller.money} thousand rupiah',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: ColorTheme.whiteColor,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 16,
+                ),
+                Container(
+                  alignment: Alignment.center,
+                  child: Text(
+                    'Our Team Will Pickup\nYour Package at ${controller.timeOfDay.hour}.${controller.timeOfDay.minute}',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: ColorTheme.whiteColor,
@@ -93,7 +123,9 @@ class PickupSuccessPage extends StatelessWidget {
                 fontSize: 18,
               ),
             ),
-            onPressed: () {},
+            onPressed: () {
+              Get.offNamed(AppRoutes.homePage);
+            },
           ),
         ),
       ),

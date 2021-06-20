@@ -82,7 +82,7 @@ class PickupPage extends StatelessWidget {
                                 SizedBox(
                                   height: 16,
                                 ),
-                                controller.isSubmittedOrigin
+                                false
                                     ? Container(
                                         alignment: Alignment.centerLeft,
                                         child: Column(
@@ -230,7 +230,7 @@ class PickupPage extends StatelessWidget {
                                 SizedBox(
                                   height: 16,
                                 ),
-                                controller.isSubmittedDestination
+                                false
                                     ? Container(
                                         alignment: Alignment.centerLeft,
                                         child: Column(
@@ -378,7 +378,7 @@ class PickupPage extends StatelessWidget {
                                 SizedBox(
                                   height: 16,
                                 ),
-                                controller.isSubmittedPackage
+                                false
                                     ? Container(
                                         alignment: Alignment.centerLeft,
                                         child: Column(
@@ -548,16 +548,23 @@ class PickupPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
-                    child: Text(
-                      'Request Pickup',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: ColorTheme.whiteColor,
-                        fontWeight: FontWeight.w800,
-                        fontSize: 16,
-                      ),
-                    ),
-                    onPressed: null,
+                    child: !controller.isButtonLoading
+                        ? Text(
+                            'Request Pickup',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: ColorTheme.whiteColor,
+                              fontWeight: FontWeight.w800,
+                              fontSize: 16,
+                            ),
+                          )
+                        : Container(
+                            padding: EdgeInsets.symmetric(vertical: 8),
+                            child: CircularProgressIndicator(),
+                          ),
+                    onPressed: () {
+                      controller.tapRequestPickup();
+                    },
                   ),
                 ),
               ],

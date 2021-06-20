@@ -253,15 +253,21 @@ class AddPackagePage extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(8),
                                   ),
                                 ),
-                                child: Text(
-                                  'Save Package',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: ColorTheme.whiteColor,
-                                    fontWeight: FontWeight.w800,
-                                    fontSize: 16,
-                                  ),
-                                ),
+                                child: !controller.isButtonLoading
+                                    ? Text(
+                                        'Save Package',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: ColorTheme.whiteColor,
+                                          fontWeight: FontWeight.w800,
+                                          fontSize: 16,
+                                        ),
+                                      )
+                                    : Container(
+                                        padding:
+                                            EdgeInsets.symmetric(vertical: 8),
+                                        child: CircularProgressIndicator(),
+                                      ),
                                 onPressed: controller.tapSavePackage,
                               ),
                             ),
