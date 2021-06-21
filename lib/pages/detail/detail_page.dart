@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:loading_indicator/loading_indicator.dart';
 import 'package:packboss/apis/api.dart';
 import 'package:packboss/routes/app_pages.dart';
 import 'package:packboss/themes/index.dart';
@@ -21,18 +22,22 @@ class DetailPage extends StatelessWidget {
           elevation: 0,
         ),
         body: SingleChildScrollView(
-          physics: NeverScrollableScrollPhysics(),
           child: Container(
             width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
+            height: MediaQuery.of(context).size.height / 1.2,
             padding: EdgeInsets.all(16),
             decoration: BoxDecoration(
               gradient: GradientBg.getGradient(),
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [],
-            ),
+            child: controller.isLoading
+                ? LoadingIndicator(
+                    indicatorType: Indicator.orbit,
+                    color: ColorTheme.whiteColor,
+                  )
+                : Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [],
+                  ),
           ),
         ),
       ),

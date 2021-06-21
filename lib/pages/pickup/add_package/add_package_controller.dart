@@ -72,7 +72,7 @@ class AddPackageController extends GetxController {
     String packageName = packageNameController.text;
     String packageWeight = packageWeightController.text;
     String packageDimension =
-        '${packageLengthController.text} x ${packageWidthController.text} x ${packageHeightController.text}';
+        '${packageLengthController.text} cm x ${packageWidthController.text} cm x ${packageHeightController.text} cm';
     print(
         '$category , $packageName, $packageWeight, $packageDimension, $recipientName, $recipientPhone');
     var result = await AddPackageApi().request(

@@ -64,5 +64,6 @@ class HistoryController extends GetxController {
 
   tapDetailTransaction(String transactionId) {
     print('transaction id : $transactionId');
+    Get.toNamed(AppRoutes.detailPage, arguments: transactionId);
   }
 }
