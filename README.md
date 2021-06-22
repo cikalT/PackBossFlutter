@@ -2,6 +2,13 @@
 
 PackBoss created to fulfill a task of Advanced Database subject. PackBoss is a delivery service that help you to send any goods that you have, you can send your goods to across nation.
 
+## Clone Project
+1. Fork this Repository
+2. Clone Repository Results of your Fork
+```sh
+$ git clone https://github.com/{username}/PackBossFlutter.git
+```
+
 ## Getting Started
 
 * [Install Flutter](https://flutter.dev/get-started/)
