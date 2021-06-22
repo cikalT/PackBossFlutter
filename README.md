@@ -1,10 +1,15 @@
-# packboss
+# PackBoss
 
-A new Flutter project.
+A Pickup Service for Flutter
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+## Documentation
+
+* [Install Flutter](https://flutter.dev/get-started/)
+* [Flutter documentation](https://flutter.dev/docs)
+* [Development wiki](https://github.com/flutter/flutter/wiki)
+* [Contributing to Flutter](https://github.com/flutter/flutter/blob/master/CONTRIBUTING.md)
 
 A few resources to get you started if this is your first Flutter project:
 
