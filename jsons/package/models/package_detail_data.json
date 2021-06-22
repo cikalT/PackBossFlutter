@@ -1,0 +1,16 @@
+{
+  "id": "6e10e796-68b2-488d-81c6-118a9ecb04b5",
+  "id_user": "6244f31c-8871-41b7-9e62-ec454e105f23",
+  "id_destination": "ab2b90e3-2065-4a2d-9e9a-5c730fd11697",
+  "id_origin": "409da66a-b7b4-406e-96b6-dd8e7f1ccc57",
+  "id_category": "8379ce1c-f314-4b15-8d8a-55fbb2b3fdca",
+  "package_name": "Baju Natal untuk Muslim",
+  "recepient_name": "Joko",
+  "recepient_phone": "03612537452                                                                                                                                                                                                                                                    ",
+  "weight": "2",
+  "dimension": "60 cm x 60 cm x 4 cm",
+  "created_at": "2021-06-22T00:50:41.000000Z",
+  "updated_at": "2021-06-22T00:52:00.000000Z",
+  "user": "$user_detail_data",
+  "category": "$category_detail_data"
+}

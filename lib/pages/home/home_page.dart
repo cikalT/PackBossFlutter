@@ -35,12 +35,16 @@ class HomePage extends StatelessWidget {
             GestureDetector(
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 16),
-                child: SvgPicture.asset(
-                  'assets/icons/account-circle.svg',
+                child: Icon(
+                  Icons.exit_to_app,
                   color: ColorTheme.whiteColor,
                 ),
+                // child: SvgPicture.asset(
+                //   'assets/icons/account-circle.svg',
+                //   color: ColorTheme.whiteColor,
+                // ),
               ),
-              onTap: controller.tapProfile,
+              onTap: controller.tapLogOut,
             ),
           ],
         ),

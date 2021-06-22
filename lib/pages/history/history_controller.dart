@@ -9,8 +9,20 @@ import 'package:packboss/themes/index.dart';
 
 class HistoryController extends GetxController {
   bool isLoading = false;
+  String dropDownValue;
+
+  List<String> filterList = [
+    'waiting-for-pickup',
+    'on-pickup',
+    'on-office-storage',
+    'on-sorting',
+    'on-delivery-courier',
+    'delivered',
+    'canceled'
+  ];
 
   List<TransactionData> transactionDataList = [];
+  List<TransactionData> filteredTransactionDataList = [];
   List<int> transactionPriceList = [];
 
   int totalTransaction = 0;
@@ -40,6 +52,9 @@ class HistoryController extends GetxController {
     var result = await GetHistoryApi().request(userId);
     if (result.status) {
       transactionDataList = result.listData;
+      filteredTransactionDataList = result.listData;
+      filteredTransactionDataList
+          .sort((a, b) => b.updatedAt.compareTo(a.updatedAt));
       transactionDataList.forEach((element) {
         transactionPriceList.add(int.parse(element.totalPrice));
       });
@@ -52,18 +67,16 @@ class HistoryController extends GetxController {
     }
   }
 
-  String setStatus(String status) {
-    String convertedStatus = '';
-    switch (status) {
-      case 'waiting-for-pickup':
-        convertedStatus = 'Waiting For Pickup';
-        break;
-    }
-    return convertedStatus;
+  tapDetailTransaction(String receiptNumber) {
+    print('receiptNumber id : $receiptNumber');
+    Get.toNamed(AppRoutes.detailPage, arguments: receiptNumber);
   }
 
-  tapDetailTransaction(String transactionId) {
-    print('transaction id : $transactionId');
-    Get.toNamed(AppRoutes.detailPage, arguments: transactionId);
+  changeFilter(newValue) {
+    // filteredTransactionDataList.clear();
+    filteredTransactionDataList = transactionDataList
+        .where((element) => element.status == newValue)
+        .toList();
+    update();
   }
 }

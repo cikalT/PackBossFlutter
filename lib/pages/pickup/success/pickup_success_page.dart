@@ -74,7 +74,7 @@ class PickupSuccessPage extends StatelessWidget {
                 Container(
                   alignment: Alignment.center,
                   child: Text(
-                    'Please prepare your money for : ${controller.money} thousand rupiah',
+                    'Please prepare your money for : Rp. ${controller.money}',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: ColorTheme.whiteColor,

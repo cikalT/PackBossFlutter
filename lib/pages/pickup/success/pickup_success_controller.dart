@@ -30,6 +30,12 @@ class PickupSuccessController extends GetxController {
     resiNumber = await AppPreference.getResiNumber();
     money = int.parse(await AppPreference.getTotalMoney());
     dateTime = await AppPreference.getDatePackage();
+    // if (Get.arguments != null) {
+    //   screenArguments = Get.arguments;
+    //   resiNumber = screenArguments.id;
+    //   money = screenArguments.numberInt;
+    //   dateTime = screenArguments.title;
+    // }
     dateNow = DateTime.parse(dateTime);
     timeOfDay = TimeOfDay.fromDateTime(dateNow);
     timeOfDay = timeOfDay.replacing(hour: timeOfDay.hour + 1);

@@ -270,12 +270,12 @@ class AppPreference {
 
   static Future<Null> setPackageSaved(bool status) async {
     final prefs = await SharedPreferences.getInstance();
-    prefs.setBool(destinationSaved, status);
+    prefs.setBool(packageSaved, status);
   }
 
   static Future<bool> isPackageSaved() async {
     final prefs = await SharedPreferences.getInstance();
-    return prefs.getBool(destinationSaved) ?? false;
+    return prefs.getBool(packageSaved) ?? false;
   }
 
   static Future<bool> setReqPackageId(String data) async {

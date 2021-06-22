@@ -71,6 +71,7 @@ class AddOriginController extends GetxController {
     String regionName = regionNameController.text;
     String postalCode = postCalCodeController.text;
     String detailAddress = detailAddressCodeController.text;
+    await AppPreference.setOriginSaved(true);
     var result = await AddOriginApi().request(
         countryName: countryName,
         provinceName: provinceName,
@@ -83,7 +84,7 @@ class AddOriginController extends GetxController {
       print('data: ${addOriginData.id}');
       isButtonLoading = false;
       update();
-      Get.back();
+      Get.offNamed(AppRoutes.pickupPage);
     } else {
       print('gagal');
       Get.snackbar('Gagal', 'Periksa form data!',
@@ -102,6 +103,7 @@ class AddOriginController extends GetxController {
     String regionName = regionNameController.text;
     String postalCode = postCalCodeController.text;
     String detailAddress = detailAddressCodeController.text;
+    await AppPreference.setOriginSaved(true);
     var result = await UpdateOriginAPi().request(
         originId: originId,
         countryName: countryName,
@@ -115,7 +117,7 @@ class AddOriginController extends GetxController {
       print('data: ${addOriginData.id}');
       isButtonLoading = false;
       update();
-      Get.back();
+      Get.offNamed(AppRoutes.pickupPage);
     } else {
       print('gagal');
       Get.snackbar('Gagal', 'Periksa form data!',
@@ -126,6 +128,7 @@ class AddOriginController extends GetxController {
   }
 
   setPreference() async {
+    await AppPreference.setOriginSaved(true);
     await AppPreference.setOriginSaved(true);
     await AppPreference.setReqOriginId(addOriginData.id);
     await AppPreference.setReqOriginAddress(addOriginData.detailAddress);

@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:packboss/apis/auth/register_api.dart';
+import 'package:packboss/apis/package/get_package_detail_api.dart';
 import 'package:packboss/apis/package/get_tracking_api.dart';
 import 'package:packboss/helpers/index.dart';
 import 'package:packboss/models/index.dart';
@@ -11,6 +12,7 @@ class DetailController extends GetxController {
   bool isLoading = false;
 
   List<TrackingData> trackingDataList = [];
+  PackageDetailData packageDetailData;
 
   @override
   void onInit() async {
@@ -37,6 +39,16 @@ class DetailController extends GetxController {
     var result = await GetTrackingApi().request(transactionId);
     if (result.status) {
       trackingDataList = result.listData;
+      await getPackageDetail(trackingDataList.first.transaction.idPackage);
+    } else {
+      Get.back();
+    }
+  }
+
+  getPackageDetail(String packageId) async {
+    var result = await GetPackageDetailApi().request(packageId);
+    if (result.status) {
+      packageDetailData = result.data;
       isLoading = false;
       update();
     } else {

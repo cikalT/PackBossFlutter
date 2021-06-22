@@ -21,7 +21,11 @@ TrackingData _$TrackingDataFromJson(Map<String, dynamic> json) {
     ..transport = json['transport'] == null
         ? null
         : TransportTrackingData.fromJson(
-            json['transport'] as Map<String, dynamic>);
+            json['transport'] as Map<String, dynamic>)
+    ..transaction = json['transaction'] == null
+        ? null
+        : TransactionTrackingData.fromJson(
+            json['transaction'] as Map<String, dynamic>);
 }
 
 Map<String, dynamic> _$TrackingDataToJson(TrackingData instance) =>
@@ -35,4 +39,5 @@ Map<String, dynamic> _$TrackingDataToJson(TrackingData instance) =>
       'updated_at': instance.updatedAt,
       'user': instance.user,
       'transport': instance.transport,
+      'transaction': instance.transaction,
     };

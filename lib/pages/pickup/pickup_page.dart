@@ -562,9 +562,7 @@ class PickupPage extends StatelessWidget {
                             padding: EdgeInsets.symmetric(vertical: 8),
                             child: CircularProgressIndicator(),
                           ),
-                    onPressed: () {
-                      controller.tapRequestPickup();
-                    },
+                    onPressed: controller.tapRequestPickup,
                   ),
                 ),
               ],

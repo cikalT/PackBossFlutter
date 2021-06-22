@@ -39,7 +39,7 @@ class AddPackageController extends GetxController {
     isPackageSaved = await AppPreference.isDestinationSaved();
     if (isPackageSaved) {
       packageNameController.text = await AppPreference.getReqPackageName();
-      dropDownValue = await AppPreference.getReqPackageType();
+      // dropDownValue = await AppPreference.getReqPackageType();
       packageWeightController.text = await AppPreference.getReqPackageWeight();
       packageLengthController.text = await AppPreference.getReqPackageLength();
       packageWidthController.text = await AppPreference.getReqPackageWidth();
@@ -58,6 +58,7 @@ class AddPackageController extends GetxController {
     var result = await GetPackageCategoryApi().request();
     if (result.status) {
       categoryList = result.listData;
+      dropDownValue = categoryList.first.id;
       isLoading = false;
       update();
     } else {
@@ -85,6 +86,8 @@ class AddPackageController extends GetxController {
     if (result.status) {
       addPackageData = result.data;
       await AppPreference.setDestinationSaved(true);
+      await AppPreference.setPackageSaved(true);
+      await AppPreference.setPackageSaved(true);
       await AppPreference.setReqPackageId(addPackageData.id);
       await AppPreference.setReqPackageName(addPackageData.packageName);
       await AppPreference.setReqPackageType(addPackageData.idCategory);
@@ -94,7 +97,8 @@ class AddPackageController extends GetxController {
       await AppPreference.setReqPackageHeight(packageHeightController.text);
       isButtonLoading = false;
       update();
-      Get.back();
+      await AppPreference.setPackageSaved(true);
+      Get.offNamed(AppRoutes.pickupPage);
     } else {
       print('gagal');
       Get.snackbar('Gagal', 'Periksa form data!',

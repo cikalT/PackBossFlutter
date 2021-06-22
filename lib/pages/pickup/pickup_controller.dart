@@ -16,6 +16,7 @@ class PickupController extends GetxController {
   bool isSubmittedPackage = false;
 
   AddTransactionData addTransactionData;
+  ScreenArguments screenArguments;
 
   @override
   void onInit() async {
@@ -57,8 +58,11 @@ class PickupController extends GetxController {
     update();
     String destinationId = await AppPreference.getReqDestinationId();
     String packageId = await AppPreference.getReqPackageId();
-    if (isSubmittedOrigin && isSubmittedDestination && isSubmittedPackage) {
-      print('destination: $destinationId, package: $packageId');
+    print(
+        'origin: $isSubmittedOrigin, destination: $isSubmittedDestination, package: $isSubmittedPackage');
+    print('destination id : $destinationId, package id : $packageId');
+    // if (isSubmittedOrigin && isSubmittedDestination && isSubmittedPackage) {
+    if (isSubmittedOrigin || isSubmittedDestination || isSubmittedPackage) {
       var result = await AddTransactionApi()
           .request(destinationId: destinationId, packageId: packageId);
       if (result.status) {
@@ -69,7 +73,10 @@ class PickupController extends GetxController {
         await AppPreference.setTotalMoney(
             addTransactionData.totalPrice.toString());
         await AppPreference.setDatePackage(addTransactionData.createdAt);
-        Get.offNamed(AppRoutes.successPickup);
+        // screenArguments.id = addTransactionData.receiptNumber;
+        // screenArguments.numberInt = addTransactionData.totalPrice;
+        // screenArguments.title = addTransactionData.createdAt;
+        Get.offNamed(AppRoutes.successPickup, arguments: screenArguments);
       } else {
         Get.snackbar('Gagal', 'Ada data yang belum terisi!',
             backgroundColor: ColorTheme.whiteColor);

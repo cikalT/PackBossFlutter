@@ -21,12 +21,13 @@ class CheckPackage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               TextField(
+                controller: controller.packageNumberController,
                 decoration: InputDecoration(
                     border: InputBorder.none, hintText: 'Package Number'),
               ),
               SizedBox(
                 child: RaisedButton(
-                  onPressed: () {},
+                  onPressed: controller.tapCheck,
                   child: Text(
                     'Check your package',
                     style: TextStyle(color: ColorTheme.whiteColor),

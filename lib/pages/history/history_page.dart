@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'package:packboss/apis/api.dart';
+import 'package:packboss/helpers/index.dart';
 import 'package:packboss/routes/app_pages.dart';
 import 'package:packboss/themes/index.dart';
 
@@ -32,7 +33,7 @@ class HistoryPage extends StatelessWidget {
             color: ColorTheme.whiteColor,
           ),
           child: Text(
-            'Your Total: ${controller.totalTransaction}',
+            'Your Total: Rp. ${controller.totalTransaction}',
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.w800,
@@ -61,14 +62,71 @@ class HistoryPage extends StatelessWidget {
                         height: 16,
                       ),
                       Container(
+                        width: MediaQuery.of(context).size.height,
+                        padding: EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          color: ColorTheme.whiteColor,
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Filter',
+                              style: TextStyle(
+                                color: ColorTheme.blueColor,
+                                fontSize: 20,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            DropdownButton(
+                              hint: Text(
+                                'Select Filter',
+                                style: TextStyle(
+                                  color: ColorTheme.blueColor,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              icon: Icon(Icons.arrow_drop_down),
+                              underline: SizedBox(),
+                              value: controller.dropDownValue,
+                              onChanged: (newValue) {
+                                controller.dropDownValue = newValue;
+                                controller.changeFilter(newValue);
+                                print(newValue);
+                                controller.update();
+                              },
+                              items: controller.filterList.map((valueItem) {
+                                return DropdownMenuItem(
+                                  child: Text(
+                                    AppConfig.getDeliveryStatus(valueItem),
+                                    style: TextStyle(
+                                      color: ColorTheme.blueColor,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                  value: valueItem,
+                                );
+                              }).toList(),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 16,
+                      ),
+                      Container(
                         alignment: Alignment.centerLeft,
                         child: Column(
                           children: List.generate(
-                            controller.transactionDataList.length,
+                            controller.filteredTransactionDataList.length,
                             (index) => GestureDetector(
                               onTap: () {
-                                controller.tapDetailTransaction(
-                                    controller.transactionDataList[index].id);
+                                controller.tapDetailTransaction(controller
+                                    .filteredTransactionDataList[index]
+                                    .receiptNumber);
                               },
                               child: Card(
                                 elevation: 2,
@@ -94,7 +152,7 @@ class HistoryPage extends StatelessWidget {
                                             height: 8,
                                           ),
                                           Text(
-                                            '${controller.transactionDataList[index].package.packageName}',
+                                            '${controller.filteredTransactionDataList[index].package.packageName}',
                                             style: TextStyle(
                                               color: ColorTheme.blackColor,
                                               fontSize: 16,
@@ -116,7 +174,7 @@ class HistoryPage extends StatelessWidget {
                                             height: 8,
                                           ),
                                           Text(
-                                            '${controller.transactionDataList[index].receiptNumber}',
+                                            '${controller.filteredTransactionDataList[index].receiptNumber}',
                                             style: TextStyle(
                                               color: ColorTheme.blackColor,
                                               fontSize: 16,
@@ -140,7 +198,32 @@ class HistoryPage extends StatelessWidget {
                                           Container(
                                             width: 264,
                                             child: Text(
-                                              '${controller.transactionDataList[index].status}',
+                                              '${AppConfig.getDeliveryStatus(controller.filteredTransactionDataList[index].status)}',
+                                              style: TextStyle(
+                                                color: ColorTheme.blackColor,
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w800,
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 16,
+                                          ),
+                                          Text(
+                                            'Total',
+                                            style: TextStyle(
+                                              color: ColorTheme.greyColor,
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 8,
+                                          ),
+                                          Container(
+                                            width: 264,
+                                            child: Text(
+                                              'Rp. ${controller.filteredTransactionDataList[index].totalPrice}',
                                               style: TextStyle(
                                                 color: ColorTheme.blackColor,
                                                 fontSize: 16,
@@ -149,7 +232,7 @@ class HistoryPage extends StatelessWidget {
                                             ),
                                           ),
                                         ],
-                                      )
+                                      ),
                                     ],
                                   ),
                                 ),
