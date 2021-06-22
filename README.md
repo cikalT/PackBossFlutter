@@ -11,6 +11,7 @@ $ git clone https://github.com/{username}/PackBossFlutter.git
 
 ## Getting Started
 
+* [Install Dart](https://dart.dev/get-dart)
 * [Install Flutter](https://flutter.dev/get-started/)
 * [Flutter documentation](https://flutter.dev/docs)
 * [Development wiki](https://github.com/flutter/flutter/wiki)
