@@ -17,7 +17,7 @@ $ git clone https://github.com/{username}/PackBossFlutter.git
 * [Development wiki](https://github.com/flutter/flutter/wiki)
 * [Install Android Studio](https://developer.android.com/studio/install)
 
-After you install Flutter & Android Studio, run `flutter pub get` and run [flutter pub run json_to_mobile](https://pub.dev/packages/json_to_model/versions/1.4.0) to complie the application.
+After you install Dart, Flutter & Android Studio, run `flutter pub get` and run [flutter pub run json_to_mobile](https://pub.dev/packages/json_to_model/versions/1.4.0) to complie the application.
 For installing on your device, plug in your device and run `flutter run`
 
 For help getting started with Flutter, view the
