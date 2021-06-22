@@ -1,6 +1,6 @@
 # PackBoss
 
-A Pickup Service for Flutter
+PackBoss created to fulfill a task of Advanced Database subject. PackBoss is a delivery service that help you to send any goods that you have, you can send your goods to across nation.
 
 ## Getting Started
 
@@ -10,7 +10,7 @@ A Pickup Service for Flutter
 * [Install Android Studio](https://developer.android.com/studio/install)
 
 After you install Flutter & Android Studio, run `flutter pub get` and run [flutter pub run json_to_mobile](https://pub.dev/packages/json_to_model/versions/1.4.0) to complie the application.
-For installing, run on your device `flutter run`
+For installing on your device, plug in your device and run `flutter run`
 
 For help getting started with Flutter, view the
 [online documentation](https://flutter.dev/docs), which offers tutorials,
