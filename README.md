@@ -9,7 +9,8 @@ A Pickup Service for Flutter
 * [Development wiki](https://github.com/flutter/flutter/wiki)
 * [Install Android Studio](https://developer.android.com/studio/install)
 
-After you install Flutter & Android Studio, run `flutter pub get` and run [flutter pub run json_to_mobile](https://pub.dev/packages/json_to_model/versions/1.4.0)
+After you install Flutter & Android Studio, run `flutter pub get` and run [flutter pub run json_to_mobile](https://pub.dev/packages/json_to_model/versions/1.4.0) to complie the application.
+For installing, run on your device `flutter run`
 
 A few resources to get you started if this is your first Flutter project:
 
